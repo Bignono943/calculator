@@ -23,7 +23,34 @@ function divide(a, b) {
     return a / b;
 };
 
+function calculator(operator, a, b) {
 
+    if (operator === '+') {
+
+        return add(a, b);
+    }
+
+    else if (operator === '-') {
+
+        return soustract(a, b); 
+    }
+
+    else if (operator === '*') {
+
+        return multiply(a, b);
+    }
+
+    else if (operator === '/') {
+
+        return divide(a, b);
+    }
+
+    else {
+
+        return 'Please select a valid operator'
+    }
+
+};
 
 
 
