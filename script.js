@@ -28,7 +28,6 @@ function operate(operator, a, b) {
 let firstNumber = '';
 let secondNumber = '';
 let operator = '';
-let operator1 = '';
 let shouldResetDisplay = false;
 let result = null;
 
@@ -72,6 +71,7 @@ digits.forEach((button) => {
         secondNumber += button.textContent;
         updateDisplay(secondNumber);
        }
+ 
     } 
   );
 });
@@ -89,7 +89,6 @@ operators.forEach((button) => {
 
          } else if (secondNumber) {
 
-            //operator1 = button.textContent;
             result = operate(operator, firstNumber, secondNumber);
             firstNumber = result;
             secondNumber = '';
@@ -113,6 +112,12 @@ equals.addEventListener('click', () => {
     result = operate(operator, firstNumber, secondNumber);
     updateDisplay(result);
     updateDisplayOperator('=');
+    content.textContent = '';
+
+    firstNumber = result;
+    secondNumber = '';
+    operator = null;
+    shouldResetDisplay = true;
 })
 
 const container = document.querySelector('.top-container');
