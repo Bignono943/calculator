@@ -17,7 +17,7 @@ function operate(operator, a, b) {
             return a * b;
             
         case '/':
-            b !== 0 ? a / b : content.textContent = 'Erreur, on peut pas diviser par zéro';
+          return b !== 0 ? a / b : content.textContent = 'Erreur, on peut pas diviser par zéro';
 
         default:
             return null;
@@ -109,6 +109,10 @@ equals.addEventListener('click', () => {
         content.textContent = 'Erreur, veuillez faire un calcul valide'
         return null;
     }
+
+    result = operate(operator, firstNumber, secondNumber);
+    updateDisplay(result);
+    updateDisplayOperator('=');
 })
 
 const container = document.querySelector('.top-container');
