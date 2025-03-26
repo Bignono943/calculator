@@ -17,7 +17,7 @@ function operate(operator, a, b) {
             return a * b;
             
         case '/':
-            b !== 0 ? a / b : 'Erreur, on peut pas diviser par zéro';
+            b !== 0 ? a / b : content.textContent = 'Erreur, on peut pas diviser par zéro';
 
         default:
             return null;
@@ -49,7 +49,9 @@ function updateDisplay(value) {
      secondNumber = '';
      operator = null;
      result = null;
+     content.textContent = '';
     updateDisplay(0);
+    updateDisplayOperator('=');
   });
 
 const digits = document.querySelectorAll('.digit');
@@ -99,6 +101,21 @@ operators.forEach((button) => {
         shouldResetDisplay = true;
     })
 });
+
+const equals = document.getElementById('equals');
+equals.addEventListener('click', () => {
+
+    if (!secondNumber) {
+        content.textContent = 'Erreur, veuillez faire un calcul valide'
+        return null;
+    }
+})
+
+const container = document.querySelector('.top-container');
+const content = document.createElement('div');
+content.classList.add('content');
+content.textContent = '';
+container.appendChild(content);
 
 // les oprators et digits sint assignés, dans digits si il y a un operator on remplace value par le secondNumber, 
 // maintenant il faut faire en sorte que s'il y a un un first + operatot + secondnumber, appellé une fonction de calcul si l'utilsateur reappuie sur un operator, 
